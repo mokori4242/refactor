@@ -9,8 +9,7 @@ export function statement(invoice, plays) {
         }).format;
 
     for (let perf of invoice.performances) {
-        volumeCredits += Math.max(perf.audience - 30, 0);
-        if ("comedy" === playFor(perf).type) volumeCredits += Math.floor(perf.audience / 5);
+        volumeCredits += volumeCreditsFor(perf);
         result += ` ${playFor(perf).name}: ${format(amountFor(perf)/100)} (${perf.audience} seats)\n`;
         totalAmount += amountFor(perf);
     }
@@ -43,6 +42,13 @@ export function statement(invoice, plays) {
                 throw new Error(`unknown type: ${playFor(aPerformance).type}`);
         }
         return result;
+    }
+
+    function volumeCreditsFor(perf) {
+        let volumeCredits = 0;
+        volumeCredits += Math.max(perf.audience - 30, 0);
+        if ("comedy" === playFor(perf).type) volumeCredits += Math.floor(perf.audience / 5);
+        return volumeCredits;
     }
 }
 
