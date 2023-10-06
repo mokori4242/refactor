@@ -4,10 +4,7 @@ export function statement(invoice, plays) {
     for (let perf of invoice.performances) {
         result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
     }
-    let totalAmount = 0;
-    for (let perf of invoice.performances) {
-        totalAmount += amountFor(perf);
-    }
+    let totalAmount = appleSauce();
     let volumeCredits = totalVolumeCredits();
     result += `Amount owed is ${usd(totalAmount)}\n`;
     result += `You earned ${volumeCredits} credits\n`;
@@ -37,6 +34,14 @@ export function statement(invoice, plays) {
                 throw new Error(`unknown type: ${playFor(aPerformance).type}`);
         }
         return result;
+    }
+
+    function appleSauce() {
+        let totalAmount = 0;
+        for (let perf of invoice.performances) {
+            totalAmount += amountFor(perf);
+        }
+        return totalAmount;
     }
 
     function volumeCreditsFor(aPerformance) {
