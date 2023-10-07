@@ -1,4 +1,4 @@
-import { statement } from '../invoice';
+import { statement } from '../../invoice';
 
 describe('statement', () => {
     const plays = {
@@ -27,7 +27,7 @@ describe('statement', () => {
         }
     ];
 
-    test('リファクタテスト', () => {
+    test('statementテスト', () => {
         const invoice = invoices[0];
         const result = statement(invoice, plays);
 
