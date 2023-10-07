@@ -1,4 +1,4 @@
-import { statement } from '../../invoice';
+import { statement } from '../../statement';
 
 describe('statement', () => {
     const plays = {

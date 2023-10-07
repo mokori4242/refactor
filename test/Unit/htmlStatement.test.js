@@ -1,4 +1,4 @@
-import { htmlStatement } from '../../invoice';
+import { htmlStatement } from '../../statement';
 
 describe('htmlStatement', () => {
     const plays = {
