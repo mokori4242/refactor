@@ -1,3 +1,5 @@
+import { Producer } from "./Producer";
+
 export class Province {
     constructor(doc) {
         this._name = doc.name;
@@ -10,7 +12,7 @@ export class Province {
 
     get name() { return this._name; }
     get producers() { return this._producers; }
-    get totalProduction() { this._totalProduction = 0; }
+    get totalProduction() { return this._totalProduction; }
     set totalProduction(arg) { this._totalProduction = arg; }
     get demand() { return this._demand; }
     set demand(arg) { this._demand = parseInt(arg); }
@@ -46,7 +48,7 @@ export class Province {
     }
 }
 
-function sampleProvinceData() {
+export function sampleProvinceData() {
     return {
         name: "Asia",
         producers: [
