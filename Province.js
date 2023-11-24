@@ -32,8 +32,9 @@ export class Province {
             .forEach(p => {
                 const contribution = Math.min(remainingDemand, p.production);
                 remainingDemand -= contribution;
-                result += contribution * p.price;
+                result += contribution * p.cost;
             });
+        return result;
     }
     get demandValue() {
         return this.satisfiedDemand * this.price;
