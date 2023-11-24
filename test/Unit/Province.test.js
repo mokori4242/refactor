@@ -1,11 +1,22 @@
-import { Province, sampleProvinceData  } from "../../Province";
+import { Province, sampleProvinceData } from "../../Province";
 
-it('shortfallTest', () => {
-    const asia = new Province(sampleProvinceData());
-    expect(asia.shortfall).toEqual(5);
-});
+describe('province', function () {
+    let asia;
+    beforeEach(function () {
+        asia = new Province(sampleProvinceData());
+    });
 
-it('profitTest', () => {
-    const asia = new Province(sampleProvinceData());
-    expect(asia.profit).toEqual(230);
+    it('shortfallTest', () => {
+        expect(asia.shortfall).toEqual(5);
+    });
+
+    it('profitTest', () => {
+        expect(asia.profit).toEqual(230);
+    });
+
+    it('changeProduction', () => {
+        asia.producers[0].production = 20;
+        expect(asia.shortfall).toEqual(-6);
+        expect(asia.profit).toEqual(292);
+    });
 });
