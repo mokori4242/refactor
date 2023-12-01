@@ -1,7 +1,3 @@
 function getRating(drive) {
-    return moreThanFiveLateDeliveries(drive) ? 2 : 1;
-}
-
-function moreThanFiveLateDeliveries(drive) {
-    return drive.numberOfLateDeliveries > 5;
+    return (drive.numberOfLateDeliveries > 5) ? 2 : 1;
 }
