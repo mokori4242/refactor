@@ -12,6 +12,14 @@ function printOwing(invoice) {
     printDetails(invoice, outstanding);
 }
 
+function calculateOutstanding(invoice) {
+    let outstanding = 0;
+    for (const o of invoice.orders) {
+        outstanding += o.amount;
+    }
+    return outstanding;
+}
+
 function printBanner() {
     console.log("***********************");
     console.log("**** Customer Owes ****");
