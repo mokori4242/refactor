@@ -2,12 +2,7 @@ function printOwing(invoice) {
 
     printBanner();
 
-    // 未払金の計算 calculate outstanding
-    let outstanding = 0;
-    for (const o of invoice.orders) {
-        outstanding += o.amount;
-    }
-
+    let outstanding = calculateOutstanding(invoice);
     recordDueDate(invoice);
     printDetails(invoice, outstanding);
 }
