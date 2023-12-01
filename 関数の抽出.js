@@ -1,9 +1,7 @@
 function printOwing(invoice) {
     let outstanding = 0;
 
-    console.log("***********************");
-    console.log("**** Customer Owes ****");
-    console.log("***********************");
+    printBanner();
 
     // 未払金の計算 calculate outstanding
     for (const o of invoice.orders) {
@@ -14,8 +12,17 @@ function printOwing(invoice) {
     const today = Clock.today;
     invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
 
-    // 明細の印字 print details
-    console.log(`name: ${invoice.customer}`);
-    console.log(`amount: ${outstanding}`);
-    console.log(`due: ${invoice.dueDate.toLocaleDateString()}`);
+    printDetails();
+
+    function printDetails() {
+        console.log(`name: ${invoice.customer}`);
+        console.log(`amount: ${outstanding}`);
+        console.log(`due: ${invoice.dueDate.toLocaleDateString()}`);
+    }
+}
+
+function printBanner() {
+    console.log("***********************");
+    console.log("**** Customer Owes ****");
+    console.log("***********************");
 }
