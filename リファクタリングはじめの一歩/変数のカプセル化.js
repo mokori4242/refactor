@@ -1,0 +1,1 @@
+let defaultOwner = {firstName: "マーティン", lastName: "ファウラー"};
