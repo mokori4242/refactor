@@ -8,3 +8,8 @@ class Organization {
     get country() { return this._country; }
     set country(arg) { this._country = arg; }
 }
+
+organization = new Organization({ name: "Acme Gooseberries", country: "GB" });
+function getOrganization() { return organization; }
+
+result += `<h1>${getOrganization().name}</h1>`;
