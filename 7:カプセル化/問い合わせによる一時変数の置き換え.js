@@ -4,12 +4,15 @@ class Order {
         this._item = item;
     }
 
+    get basePrice() {
+        return this._quantity * this._item.price;
+    }
+
     get price() {
-        const basePrice = this._quantity * this._item.price;
-        if (basePrice > 1000) {
-            return basePrice * 0.95;
+        if (this.basePrice > 1000) {
+            return this.basePrice * 0.95;
         } else {
-            return basePrice * 0.98;
+            return this.basePrice * 0.98;
         }
     }
 }
