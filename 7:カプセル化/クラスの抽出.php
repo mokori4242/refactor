@@ -1,30 +1,46 @@
 <?php
-
 class Person
 {
     private $name;
-    private $streetAddress;
-    private $city;
-    private $postalCode;
+    private $address; // Address クラスのインスタンス
 
-    public function __construct($name, $streetAddress, $city, $postalCode)
+    public function __construct($name, Address $address)
     {
         $this->name = $name;
-        $this->streetAddress = $streetAddress;
-        $this->city = $city;
-        $this->postalCode = $postalCode;
+        $this->address = $address;
     }
 
-    // ゲッターとセッター
     public function getName()
     {
         return $this->name;
     }
 
+    public function getAddress()
+    {
+        return $this->address;
+    }
+}
+
+class Address
+
+{
+    private $streetAddress;
+    private $city;
+    private $postalCode;
+
+    public function __construct($streetAddress, $city, $postalCode)
+    {
+        $this->streetAddress = $streetAddress;
+        $this->city = $city;
+        $this->postalCode = $postalCode;
+    }
+
+    // ゲッター
     public function getStreetAddress()
     {
         return $this->streetAddress;
     }
+
 
     public function getCity()
     {
