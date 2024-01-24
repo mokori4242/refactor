@@ -1,36 +1,20 @@
 <?php
-
 class Person
 {
     private $name;
-    private $contactInfo; // ContactInfo クラスのインスタンス
+    private $email;
+    private $phoneNumber;
 
-    public function __construct($name, ContactInfo $contactInfo)
+    public function __construct($name, $email, $phoneNumber)
     {
         $this->name = $name;
-        $this->contactInfo = $contactInfo;
+        $this->email = $email;
+        $this->phoneNumber = $phoneNumber;
     }
 
     public function getName()
     {
         return $this->name;
-    }
-
-    public function getContactInfo()
-    {
-        return $this->contactInfo;
-    }
-}
-
-class ContactInfo
-{
-    private $email;
-    private $phoneNumber;
-
-    public function __construct($email, $phoneNumber)
-    {
-        $this->email = $email;
-        $this->phoneNumber = $phoneNumber;
     }
 
     public function getEmail()
