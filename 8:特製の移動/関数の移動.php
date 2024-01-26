@@ -1,6 +1,20 @@
 <?php
-
 class Person
+{
+    private $address;
+
+    public function __construct($address)
+    {
+        $this->address = new Address($address);
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
+    }
+}
+
+class Address
 {
     private $address;
 
@@ -9,7 +23,7 @@ class Person
         $this->address = $address;
     }
 
-    public function formatAddress()
+    public function format()
     {
         return "Address: " . $this->address;
     }
@@ -17,4 +31,4 @@ class Person
 
 // クライアントコード
 $person = new Person("123 Main St");
-echo $person->formatAddress();
+echo $person->getAddress()->format();
