@@ -8,9 +8,9 @@ class Person
         $this->department = $department;
     }
 
-    public function getManager()
+    public function getDepartment()
     {
-        return $this->department->getManager();
+        return $this->department;
     }
 }
 
@@ -31,4 +31,4 @@ class Department
 
 //client
 $person = new Person();
-$manager = $person->getManager();
+$manager = $person->getDepartment()->getManager();
