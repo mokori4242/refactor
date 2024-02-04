@@ -1,4 +1,5 @@
 <?php
+
 class User
 {
     public $role;
@@ -7,14 +8,19 @@ class User
     {
         $this->role = $role;
     }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
 }
 
 // クライアントコード1
-if ($user->role === 'admin') {
+if ($user->isAdmin()) {
     // 管理者の場合の処理
 }
 
 // クライアントコード2
-if ($user->role === 'admin') {
+if ($user->isAdmin()) {
     // 別の場所での管理者の場合の処理
 }
