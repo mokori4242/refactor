@@ -1,15 +1,15 @@
 <?php
-
 class User
 {
-    public $d; // 誕生日を表すが、名前が不明瞭
+    public $dateOfBirth; // 名前を明確に
 
-    public function __construct($dob)
+    public function __construct($dateOfBirth)
     {
-        $this->d = $dob;
+        $this->dateOfBirth = $dateOfBirth;
     }
 }
 
 // クライアントコード
 $user = new User("1990-01-01");
-echo "Date of Birth: " . $user->d;
+echo "Date of Birth: " . $user->dateOfBirth;
+
