@@ -1,4 +1,16 @@
 <?php
+class CustomerRepository
+{
+    private $customers = [];
+
+    public function getCustomer($id, $name)
+    {
+        if (!isset($this->customers[$id])) {
+            $this->customers[$id] = new Customer($id, $name);
+        }
+        return $this->customers[$id];
+    }
+}
 
 class Customer
 {
@@ -12,8 +24,9 @@ class Customer
     }
 }
 
-$customer1 = new Customer(1, "Alice");
+$repository = new CustomerRepository();
+$customer1 = $repository->getCustomer(1, "Alice");
 $order1 = new Order($customer1);
 
-$customer2 = new Customer(1, "Alice");
+$customer2 = $repository->getCustomer(1, "Alice");
 $order2 = new Order($customer2);
