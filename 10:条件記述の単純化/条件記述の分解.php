@@ -1,10 +1,20 @@
 <?php
 
-function calculateDiscount($customerLoyaltyYears, $purchaseAmount)
+$finalAmount = isTenPercentDiscount($customerLoyaltyYears, $purchaseAmount)
+    ? applyTenPercentDiscount($purchaseAmount)
+    : applyFivePercentDiscount($purchaseAmount);
+
+function isTenPercentDiscount($customerLoyaltyYears, $purchaseAmount)
 {
-    if ($customerLoyaltyYears > 5 && $purchaseAmount > 1000) {
-        return $purchaseAmount * 0.1; // 10%の割引
-    } else {
-        return $purchaseAmount * 0.05; // 5%の割引
-    }
+    return $customerLoyaltyYears > 5 && $purchaseAmount > 1000;
+}
+
+function applyFivePercentDiscount($purchaseAmount)
+{
+    return $purchaseAmount * 0.05;
+}
+
+function applyTenPercentDiscount($purchaseAmount)
+{
+    return $purchaseAmount * 0.1;
 }
