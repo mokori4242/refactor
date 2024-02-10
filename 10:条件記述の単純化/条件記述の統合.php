@@ -2,11 +2,5 @@
 
 function canAccessService($user)
 {
-    if ($user->age < 18) {
-        return false;
-    }
-    if (!$user->isMember) {
-        return false;
-    }
-    return true;
+    return $user->age >= 18 && $user->isMember;
 }
