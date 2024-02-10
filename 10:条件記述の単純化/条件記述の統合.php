@@ -2,5 +2,11 @@
 
 function canAccessService($user)
 {
-    return $user->age >= 18 && $user->isMember;
+    if ($user->role === "admin") {
+        return true;
+    }
+    if ($user->isSpecialMember) {
+        return true;
+    }
+    return false;
 }
