@@ -1,23 +1,39 @@
 <?php
 
-class Bird
+interface Bird
 {
-    public $type;
+    public function getSpeed();
+}
 
-    public function __construct($type)
-    {
-        $this->type = $type;
-    }
-
+class European implements Bird
+{
     public function getSpeed()
     {
-        switch ($this->type) {
-            case "European":
-                return 10;
-            case "African":
-                return $this->hasTailWinds ? 20 : 10;
-            case "NorwegianBlue":
-                return $this->isNailed ? 0 : 12;
-        }
+        return 10;
     }
 }
+
+class African implements Bird
+{
+    public function getSpeed()
+    {
+        return $this->hasTailWinds ? 20 : 10;
+    }
+}
+
+class NorwegianBlue implements Bird
+{
+    public function getSpeed()
+    {
+        return $this->isNailed ? 0 : 12;
+    }
+}
+
+// クライアントコード
+function getBirdSpeed(Bird $bird)
+{
+    return $bird->getSpeed();
+}
+
+$bird = new European();
+echo getBirdSpeed($bird);
