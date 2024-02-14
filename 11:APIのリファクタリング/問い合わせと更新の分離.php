@@ -2,19 +2,17 @@
 
 class ReportGenerator
 {
-    public function generateReport($data)
-    {
-        // レポートデータの加工
-        $processedData = $this->processData($data);
-        // 加工したデータをもとにレポートを生成し、その結果を返す
-        return $this->createReport($processedData);
-    }
-
-    private function processData($data)
+    public function processData($data)
     {
         // データ加工のロジック
-        // ここでデータを変更
-        return $processedData;
+        // ここでデータを変更するが、このメソッドの主な目的はデータの更新である
+    }
+
+    public function generateReport($data)
+    {
+        // レポートの生成と値の返却のみを行う
+        // ここではデータの加工（更新）は行わない
+        return $this->createReport($data);
     }
 
     private function createReport($data)
@@ -24,3 +22,9 @@ class ReportGenerator
         return $report;
     }
 }
+
+// クライアントコードでは、データの加工が必要な場合には、
+// processData を明示的に呼び出し、その後に generateReport を呼び出す
+$reportGenerator = new ReportGenerator();
+$reportGenerator->processData($data); // 明示的なデータの加工（更新）
+$report = $reportGenerator->generateReport($data); // レポートの生成と返却
