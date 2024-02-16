@@ -1,6 +1,5 @@
 <?php
 
-
 class Order
 {
     protected $quantity;
@@ -14,13 +13,17 @@ class Order
 
     public function finalPrice()
     {
-        $discountLevel = ($this->quantity > 100) ? 2 : 1;
-        return $this->discountedPrice($discountLevel);
+        return $this->discountedPrice();
     }
 
-    private function discountedPrice($discountLevel)
+    public function getDiscountLevel()
     {
-        if ($discountLevel == 2) {
+        return ($this->quantity > 100) ? 2 : 1;
+    }
+
+    private function discountedPrice()
+    {
+        if ($this->getDiscountLevel() == 2) {
             return ($this->quantity * $this->itemPrice) * 0.9;
         } else {
             return ($this->quantity * $this->itemPrice) * 0.95;
