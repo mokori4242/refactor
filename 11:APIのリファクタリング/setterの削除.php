@@ -4,7 +4,7 @@ class User
 {
     private $name;
 
-    public function setName($name)
+    public function __construct($name)
     {
         $this->name = $name;
     }
@@ -15,6 +15,5 @@ class User
     }
 }
 
-$user = new User();
-$user->setName("John Doe");
+$user = new User("John Doe");
 echo $user->getName();
