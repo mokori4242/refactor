@@ -24,9 +24,14 @@ class ReportGenerator
         $this->user = $user;
     }
 
-    public function generateReport()
+    public function generateReport($location)
     {
-        $location = $this->user->getLocation();
         // レポート生成ロジック...
     }
 }
+
+// クライアントコード
+$user = new User("New York");
+$reportGenerator = new ReportGenerator($user);
+$location = $user->getLocation();
+$reportGenerator->generateReport($location);
