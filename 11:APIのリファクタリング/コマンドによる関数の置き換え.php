@@ -1,23 +1,78 @@
 <?php
 
-function registerUser($userData)
+interface Command
 {
-    saveToDatabase($userData);
-    sendWelcomeEmail($userData['email']);
-    logRegistration($userData['username']);
+    public function execute();
 }
 
-function saveToDatabase($userData)
+class SaveToDatabaseCommand implements Command
 {
-    // データベースへの保存ロジック
+    private $userData;
+
+    public function __construct($userData)
+    {
+        $this->userData = $userData;
+    }
+
+    public function execute()
+    {
+        // データベースへの保存ロジック
+    }
 }
 
-function sendWelcomeEmail($email)
+class SendWelcomeEmailCommand implements Command
 {
-    // メール送信ロジック
+    private $email;
+
+    public function __construct($email)
+    {
+        $this->email = $email;
+    }
+
+    public function execute()
+    {
+        // メール送信ロジック
+    }
 }
 
-function logRegistration($username)
+class LogRegistrationCommand implements Command
 {
-    // 登録ログロジック
+    private $username;
+
+    public function __construct($username)
+    {
+        $this->username = $username;
+    }
+
+    public function execute()
+    {
+        // 登録ログロジック
+    }
 }
+
+class UserRegistration
+{
+    private $commands;
+
+    public function __construct()
+    {
+        $this->commands = [];
+    }
+
+    public function addCommand(Command $command)
+    {
+        $this->commands[] = $command;
+    }
+
+    public function registerUser($userData)
+    {
+        $this->addCommand(new SaveToDatabaseCommand($userData));
+        $this->addCommand(new SendWelcomeEmailCommand($userData['email']));
+        $this->addCommand(new LogRegistrationCommand($userData['username']));
+
+        foreach ($this->commands as $command) {
+            $command->execute();
+        }
+    }
+}
+
