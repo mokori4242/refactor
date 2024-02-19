@@ -1,25 +1,9 @@
 <?php
 
-interface Command
+function greet($name)
 {
-    public function execute();
-}
-
-class GreetCommand implements Command
-{
-    private $name;
-
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
-
-    public function execute()
-    {
-        echo "Hello, " . $this->name;
-    }
+    echo "Hello, " . $name;
 }
 
 // クライアントコード
-$command = new GreetCommand("John");
-$command->execute();
+greet("John");
