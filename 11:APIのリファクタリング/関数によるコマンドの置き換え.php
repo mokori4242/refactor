@@ -2,7 +2,7 @@
 
 function greet($name)
 {
-    echo "Hello, " . $name;
+    echo "Hello, " . $name . "!" . PHP_EOL;
 }
 
 // クライアントコード
