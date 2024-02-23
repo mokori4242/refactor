@@ -1,37 +1,22 @@
 <?php
 
-class Employee
+abstract class Employee
 {
-    const MANAGER = 0;
-    const ENGINEER = 1;
-    private $type;
+    abstract public function calculatePay();
+}
 
-    public function __construct($type)
-    {
-        $this->type = $type;
-    }
-
+class Manager extends Employee
+{
     public function calculatePay()
-    {
-        switch ($this->type) {
-            case self::MANAGER:
-                return $this->calculateManagerPay();
-                break;
-            case self::ENGINEER:
-                return $this->calculateEngineerPay();
-                break;
-            default:
-                throw new Exception("Invalid employee type");
-        }
-    }
-
-    private function calculateManagerPay()
     {
         // マネージャーの給与計算ロジック
         return 5000;
     }
+}
 
-    private function calculateEngineerPay()
+class Engineer extends Employee
+{
+    public function calculatePay()
     {
         // エンジニアの給与計算ロジック
         return 3000;
@@ -39,8 +24,8 @@ class Employee
 }
 
 // クライアントコード
-$manager = new Employee(Employee::MANAGER);
+$manager = new Manager();
 echo $manager->calculatePay(); // 5000
 
-$engineer = new Employee(Employee::ENGINEER);
+$engineer = new Engineer();
 echo $engineer->calculatePay(); // 3000
