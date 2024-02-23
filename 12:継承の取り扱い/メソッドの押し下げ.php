@@ -2,23 +2,27 @@
 
 class Vehicle
 {
+    // Common behaviors for all vehicles
+}
+
+
+class Car extends Vehicle
+{
     public function specificMethod()
     {
         echo "This method is only used by Car.";
     }
-}
 
-class Car extends Vehicle
-{
-    // Car-specific behaviors
 }
 
 class Truck extends Vehicle
 {
-    // Truck-specific behaviors
+    // Truck-specific behaviors remain unchanged
 }
 
-class Truck extends Vehicle
-{
-    // Truck-specific behaviors
-}
+// クライアントコード
+$car = new Car();
+$car->specificMethod(); // 正常に動作
+
+$truck = new Truck();
+// $truck->specificMethod(); これはもはや存在しないため、エラーとなる
