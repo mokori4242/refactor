@@ -1,30 +1,28 @@
 <?php
 
-// 親クラス
+// 統合されたクラス
 class Employee
 {
     protected $name;
+    protected $type;
 
-    public function __construct($name)
+
+    public function __construct($name, $type = 'employee')
     {
         $this->name = $name;
+        $this->type = $type;
     }
+
 
     public function calculatePay()
     {
+        if ($this->type === 'manager') {
+            return "Manager Pay";
+        }
         return "Base Pay";
     }
 }
 
-// サブクラス
-class Manager extends Employee
-{
-    public function calculatePay()
-    {
-        return "Manager Pay";
-    }
-}
-
 // クライアントコード
-$manager = new Manager("John");
-echo $manager->calculatePay(); // Manager Pay
+$employee = new Employee("John", 'manager');
+echo $employee->calculatePay(); // Manager Pay
