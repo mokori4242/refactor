@@ -1,22 +1,15 @@
 <?php
 
-class Animal
+class Bird
 {
     public function eat()
     {
-        echo "This animal eats food.";
+        echo "This bird eats food.";
     }
 
-}
-
-
-class Bird extends Animal
-{
     public function fly()
     {
-
-        echo "This bird can
-    fly.";
+        echo "This bird can fly.";
     }
 }
 
