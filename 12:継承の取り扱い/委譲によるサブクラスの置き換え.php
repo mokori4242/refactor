@@ -2,31 +2,43 @@
 
 class Show
 {
+    private $reservationHandler;
+
+    public function __construct(ReservationHandler $handler)
+    {
+        $this->reservationHandler = $handler;
+    }
+
     public function makeReservation()
     {
-        echo "General Show Reservation\n";
+        $this->reservationHandler->handleReservation();
     }
 }
 
-class Movie extends Show
+interface ReservationHandler
 {
-    public function makeReservation()
+    public function handleReservation();
+}
+
+class MovieReservationHandler implements ReservationHandler
+{
+    public function handleReservation()
     {
         echo "Movie Reservation\n";
     }
 }
 
-class Theater extends Show
+class TheaterReservationHandler implements ReservationHandler
 {
-    public function makeReservation()
+    public function handleReservation()
     {
         echo "Theater Reservation\n";
     }
 }
 
 // クライアントコード
-$movie = new Movie();
-$movie->makeReservation(); // Movie Reservation
+$movieShow = new Show(new MovieReservationHandler());
+$movieShow->makeReservation(); // Movie Reservation
 
-$theater = new Theater();
-$theater->makeReservation(); // Theater Reservation
+$theaterShow = new Show(new TheaterReservationHandler());
+$theaterShow->makeReservation(); // Theater Reservation
